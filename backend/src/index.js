@@ -24,7 +24,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
  ))
 
  app.use("/api/auth", authRoutes);
- app.use("/api/messages", messageRoutes);
+ app.use("messages", messageRoutes);
  if(process.env.NODE_ENV==="production"){
   app.use(express.static(path.join(__dirname,"../frontend/dist")))
   app.get("*",(req,res)=>{
