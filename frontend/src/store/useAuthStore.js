@@ -5,9 +5,11 @@
 // Zustand is open-source with a large community of users and support developers working round the clock to make Zustand stable.
 //  It sits on Github with 30,000+ stars.
 import { create } from "zustand";
-import { axiosInstance } from "../lib/axios";
+
 import toast from "react-hot-toast";
 import {io} from "socket.io-client";
+import { axiosInstance } from "../lib/axios.js";
+
 const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 export const useAuthStore = create((set, get) => ({

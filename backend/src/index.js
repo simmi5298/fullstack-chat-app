@@ -24,15 +24,17 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
  ))
 
  app.use("/api/auth", authRoutes);
- app.use("messages", messageRoutes);
- if(process.env.NODE_ENV==="production"){
-  app.use(express.static(path.join(__dirname,"../frontend/dist")))
-  app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
-  }
-)
- }
- server.listen(PORT,()=>{
-    console.log("server is running on port: " +PORT)
-    connectDB()
- })
+ app.use("/api/messages", messageRoutes);
+
+ if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
+
+server.listen(PORT, () => {
+  console.log("server is running on PORT:" + PORT);
+  connectDB();
+});
